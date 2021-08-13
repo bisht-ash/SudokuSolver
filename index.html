@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Solver</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+    <script src="./script.js" async defer></script>
+</head>
+<body>
+    <div class="top">
+        <h1>SUDOKU SOLVER</h1>
+        <p>This Sudoku solver uses <b>Donald Knuth's Dancing Links algorithm</b> to solve Sudoku implementations.</p>
+        <p>Fill the grid</p>
+    </div>
+    <div class="container">
+        <div class="about">
+            <h2>DID YOU KNOW?</h2>
+            <p>The least number of clues of a given Sudoku with a unique solution is 17.</p>
+            <p>Actually, Sudoku isn’t a Japanese game it all. It’s American invented. Howard Garns created it as Number Place in 1979 but died in 1989 before Japanese publisher Nikoli got a hold of it. The game didn’t really take off until 2004 though when Wayne Gould convinced The Times in London to publish it.</p>
+            <p>Sudoku is considered highly addictive, but since there aren’t any harmful side effects (and in fact a list of great side effects), go right ahead and get addicted!</p>
+            <p>When Sudoku became a world hit in 2005, it is estimated that it is the biggest phenomenon since the Rubik’s Cube in the 1980s.</p>
+        </div>
+        <div class="Board">
+            <div class=BoardRow>
+                <input type="text" maxlength="1" class="left btn top" id="00">
+                <input type="text" maxlength="1" class="left btn"id="0">
+                <input type="text" maxlength="1" class="left btn"id="0">
+                <input type="text" maxlength="1" class="left btn"id="0">
+                <input type="text" maxlength="1" class="left btn"id="0">
+                <input type="text" maxlength="1" class="left btn"id="0">
+                <input type="text" maxlength="1" class="left btn"id="0">
+                <input type="text" maxlength="1" class="left btn"id="0">
+                <input type="text" maxlength="1" class="left btn bottom" id="0">
+            </div>
+            <div class=BoardRow>
+                <input type="text" maxlength="1" class="btn top">
+                <input type="text" maxlength="1" class="btn">
+                <input type="text" maxlength="1" class="btn">
+                <input type="text" maxlength="1" class="btn">
+                <input type="text" maxlength="1" class="btn">
+                <input type="text" maxlength="1" class="btn">
+                <input type="text" maxlength="1" class="btn">
+                <input type="text" maxlength="1" class="btn">
+                <input type="text" maxlength="1" class="btn bottom">
+            </div>
+            <div class=BoardRow>
+                <input type="text" maxlength="1" class="btn top" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn bottom">
+            </div>
+            <div class=BoardRow>
+                <input type="text" maxlength="1" class="btn top" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn bottom">
+            </div>
+            <div class=BoardRow>
+                <input type="text" maxlength="1" class="btn top" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn bottom">
+            </div>
+            <div class=BoardRow>
+                <input type="text" maxlength="1" class="btn top" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn bottom">
+            </div>
+            <div class=BoardRow>
+                <input type="text" maxlength="1" class="btn top" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn bottom">
+            </div>
+            <div class=BoardRow>
+                <input type="text" maxlength="1" class="btn top" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn" >
+                <input type="text" maxlength="1" class="btn bottom">
+            </div>
+            <div class=BoardRow>
+                <input type="text" maxlength="1" class="btn right top">
+                <input type="text" maxlength="1" class="btn right">
+                <input type="text" maxlength="1" class="btn right">
+                <input type="text" maxlength="1" class="btn right">
+                <input type="text" maxlength="1" class="btn right">
+                <input type="text" maxlength="1" class="btn right">
+                <input type="text" maxlength="1" class="btn right">
+                <input type="text" maxlength="1" class="btn right">
+                <input type="text" maxlength="1" class="btn right bottom">
+            </div>
+        </div>
+        <div class="rules">
+            <h2>RULES FOR BIGINNER</h2>
+            <p>Rule 1 - Each row must contain the numbers from 1 to 9, without repetitions.</p>
+            <p>Rule 2 - Each column must contain the numbers from 1 to 9, without repetitions.</p>
+            <p>Rule 3 - The digits can only occur once per block (nonet).</p>
+            <p>Rule 4 - The sum of every single row, column and nonet must equal 45.</p>
+        </div>
+    </div>
+    <div class="bot">
+        <button class="button">Solve</button>
+        <button class="button">Reset</button>
+    </div>
+    <div class="knuth">
+        <h2 class="yoda">YODA OF SILICON VALLEY</h2>
+       <p>Donald Ervin Knuth (born January 10, 1938) is a renowned computer scientist and professor emeritus at Stanford University.
+        Knuth is best known as the author of the multi-volume The Art of Computer Programming , one of the most highly respected references in the computer science field. He practically created the field of rigorous analysis of algorithms, and made many seminal contributions to several branches of theoretical computer science. He is also the creator of the TeX typesetting system and of the METAFONT font design system, and pioneered the concept of literate programming.</p>
+        <br>
+        <br>
+        <p><i>In fact what I would like to see is thousands of computer scientists let loose to do whatever they want. That's what really advances the field. ~ Donald Knuth</i></p>
+    </div>
+    
+</body>
+</html>
