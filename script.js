@@ -24,6 +24,7 @@ function createMatrix(){
 
 btnReset=document.getElementById("reset");
 btnReset.onclick =function(){
+    document.getElementsByClassName("hidden")[0].style.display='none';
     for(let i =0;i<9;i++){
         for(let j=0;j<9;j++){
             let si=i.toString();
