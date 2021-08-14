@@ -122,7 +122,6 @@ input::-webkit-inner-spin-button {
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        align-items: center;
     }
     input[type="text"] {
         border: 1px dotted #000;
