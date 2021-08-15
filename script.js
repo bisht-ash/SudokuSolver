@@ -16,7 +16,13 @@ function createMatrix(){
             let si=i.toString();
             let sj=j.toString();
             let val=document.getElementById(si+sj).value;
-            board[i][j]=parseInt(val);
+            if(val.length==0){
+                board[i][j]=0;
+            }
+            else{
+                board[i][j]=parseInt(val);
+            }
+            
         }
     }
     console.log(board);
@@ -37,7 +43,7 @@ btnReset.onclick =function(){
 
 function isInRow(x,row,col){
     for(let i=0;i<9;++i){
-        if(i!=col && board[row][i]==x){
+        if(board[row][i]===x){
             return true;
         }
     }
@@ -45,18 +51,20 @@ function isInRow(x,row,col){
 }
 function isInCol(x,row,col){
     for(let i=0;i<9;++i){
-        if(i!=row && board[i][col]==x){
+        if(board[i][col]===x){
             return true;
         }
     }
     return false;
 }
 function isInBlock(x,row,col){
-    let rowStart=parseInt((row/3)*3);
-    let ColStart=parseInt((col/3)*3);
+    let rowStart=parseInt((row/3))*3;
+    let colStart=parseInt((col/3))*3;
+    console.log(rowStart);
+    console.log(colStart);
     for(let i=rowStart;i<rowStart+3;++i){
-        for(let j=ColStart;j<ColStart+3;++j){
-            if(i!=row && j!=col && board[i][col]==x){
+        for(let j=colStart;j<colStart+3;++j){
+            if(board[i][j]===x){
                 return true;
             }
         }
@@ -67,14 +75,58 @@ function isInBlock(x,row,col){
 function isValid(){
     for(let i=0;i<9;++i){
         for(let j=0;j<9;++j){
-            if(board[i][j]!=0){
-                if(!isInRow(board[i][j],i,j)&& !isInCol(board[i][j],i,j) && !isInBlock(board[i][j],i,j)){
-                    return false;
+            if(board[i][j]>=1 && board[i][j]<=9){
+                if(board[i][j]!==0){
+                    if((!isInRow(board[i][j],i,j))&& (!isInCol(board[i][j],i,j)) && (!isInBlock(board[i][j],i,j))){
+                        return false;
+                    }
                 }
+            }
+            else{
+                return false;
             }
         }
     }
     return true;
+}
+
+function Solve(row,col){
+    if(row==9 && col==0){
+        return true;
+    }
+    else if(board[row][col]<1 || board[row][col]>9){
+        for(let x=1;x<=9;++x){
+            if((!isInRow(x,row,col))&& (!isInCol(x,row,col)) && (!isInBlock(x,row,col))){
+                board[row][col]=x;
+                if(col==8){
+                    if(Solve(row+1,0)){
+                        return true;
+                    }
+                    else{
+                        board[row][col]=0;
+                    }
+                }
+                else{
+                    if(Solve(row,col+1)){
+                        return true;
+                    }
+                    else{
+                        board[row][col]=0;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    else{
+        if(col==8){
+            return Solve(row+1,0);
+        }
+        else{
+            return Solve(row,col+1);
+        }
+    }
+    return false;
 }
 
 function paste(){
@@ -90,9 +142,10 @@ function paste(){
 btnSolve=document.getElementById("solve");
 btnSolve.onclick =function(){
     createMatrix();
-    if(isValid()){
+    if(isValid){
         document.getElementsByClassName("hidden")[0].style.display='none';
-        Solve();
+        console.log(board);
+        Solve(0,0);
         paste();
     }
     else{
