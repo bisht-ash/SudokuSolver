@@ -71,13 +71,46 @@ function isInBlock(x,row,col){
     }
     return false;
 }
+function isInRow1(x,row,col){
+    for(let i=0;i<9;++i){
+        if((i!=col) && board[row][i]===x){
+            return true;
+        }
+    }
+    return false;
+}
+function isInCol1(x,row,col){
+    for(let i=0;i<9;++i){
+        if((i!=(row)) && board[i][col]===x){
+            return true;
+        }
+    }
+    return false;
+}
+function isInBlock1(x,row,col){
+    let rowStart=parseInt((row/3))*3;
+    let colStart=parseInt((col/3))*3;
+    console.log(rowStart);
+    console.log(colStart);
+    for(let i=rowStart;i<rowStart+3;++i){
+        for(let j=colStart;j<colStart+3;++j){
+            if((i!=(row)) && (j!=(col)) && board[i][j]===x){
+                return true;
+            }
+        }
+    }
+    return false;
+}
 
 function isValid(){
     for(let i=0;i<9;++i){
         for(let j=0;j<9;++j){
-            if(board[i][j]>=1 && board[i][j]<=9){
-                if(board[i][j]!==0){
-                    if((!isInRow(board[i][j],i,j))&& (!isInCol(board[i][j],i,j)) && (!isInBlock(board[i][j],i,j))){
+            if(board[i][j]>=0 && board[i][j]<=9){
+                if(board[i][j]!=0){
+                    if((!isInRow1(board[i][j],i,j))&& (!isInCol1(board[i][j],i,j)) && (!isInBlock1(board[i][j],i,j))){
+                        continue;
+                    }
+                    else{
                         return false;
                     }
                 }
@@ -142,7 +175,7 @@ function paste(){
 btnSolve=document.getElementById("solve");
 btnSolve.onclick =function(){
     createMatrix();
-    if(isValid){
+    if(isValid()){
         document.getElementsByClassName("hidden")[0].style.display='none';
         console.log(board);
         Solve(0,0);
