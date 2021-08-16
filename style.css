@@ -135,11 +135,16 @@ input::-webkit-inner-spin-button {
         width:33%;
     }
     .bot{
+        text-align: center;
         display: flex;
         flex-direction: row;
-        justify-content: space-evenly;
+        justify-content: center;
     }
     .knuth{
         font-size: 9px;
+    }
+    .button{
+        width:23%;
+        border-radius: 20;
     }
 }
