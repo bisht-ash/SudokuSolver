@@ -96,11 +96,11 @@ input::-webkit-inner-spin-button {
     text-decoration: none;
   }
   .about{
-      width: 33%;
+      width: 100%;
       text-align: center;
   }
   .rules{
-      width: 33%;
+      width: 100%;
       text-align: center;
   }
   .yoda{
@@ -132,7 +132,7 @@ input::-webkit-inner-spin-button {
         text-align:center;
     }
     .Board{
-        width:33%;
+        width:44%;
     }
     .bot{
         text-align: center;
@@ -146,7 +146,7 @@ input::-webkit-inner-spin-button {
     .button{
         width:23%;
         text-align: center;
-        font-size: 9px;
+        font-size: 12px;
         border-radius: 20;
     }
 }

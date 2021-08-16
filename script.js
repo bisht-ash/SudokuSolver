@@ -9,6 +9,16 @@ const board=[[0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0],
     ];
+const board2=[[0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0],
+    ];
 
 function createMatrix(){
     for(let i =0;i<9;i++){
@@ -18,9 +28,11 @@ function createMatrix(){
             let val=document.getElementById(si+sj).value;
             if(val.length==0){
                 board[i][j]=0;
+				board2[i][j]=0;
             }
             else{
                 board[i][j]=parseInt(val);
+				board2[i][j]=parseInt(val);
             }
             
         }
@@ -334,7 +346,8 @@ function SolvedPuzzleOutput(Sudoku){
         for(let j=0;j<9;j++){
             let si=i.toString();
             let sj=j.toString();
-            document.getElementById(si+sj).value=Sudoku[i][j];
+			var a=document.getElementById(si+sj);
+			a.value=Sudoku[i][j];
         }
     }
 }
@@ -483,9 +496,10 @@ function Solve(row,col){
 function paste(){
     for(let i =0;i<9;i++){
         for(let j=0;j<9;j++){
-            let si=i.toString();
+			let si=i.toString();
             let sj=j.toString();
-            document.getElementById(si+sj).value=board[i][j];
+            var a=document.getElementById(si+sj);
+			a.value=board[i][j];
         }
     }
 }
