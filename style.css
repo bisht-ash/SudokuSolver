@@ -115,6 +115,9 @@ input::-webkit-inner-spin-button {
   .btn:focus{
       cursor:text;
   }
+  footer{
+      text-align: center;
+  }
 
 @media( max-width : 900px){
     .container{
@@ -127,5 +130,16 @@ input::-webkit-inner-spin-button {
         width: 20px;
         font-size: 20pxrem;
         text-align:center;
+    }
+    .Board{
+        width:33%;
+    }
+    .bot{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    .knuth{
+        font-size: 9px;
     }
 }
