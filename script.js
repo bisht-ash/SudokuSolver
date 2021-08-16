@@ -92,10 +92,10 @@ function SolveSudoku(){
 	
 	TransformListToCurrentGrid(Sudoku);
 	Search(0);
-	if(!isSolved)
-        document.getElementsByClassName("hidden")[0].style.display='none';
-	else
-        document.getElementsByClassName("hidden")[0].style.display='block';
+	// if(!isSolved)
+    //     document.getElementsByClassName("hidden")[0].style.display='none';
+	// else
+    //     document.getElementsByClassName("hidden")[0].style.display='block';
 	isSolved=false;
 }
 
